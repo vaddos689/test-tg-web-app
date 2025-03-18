@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import WebApp from '@twa-dev/sdk';
+import './App.css';
 
 function App() {
   const [user, setUser] = useState<any>(null);
@@ -31,24 +32,29 @@ function App() {
   return (
     <div className="app">
       <header className="app-header">
-        <h1>Telegram Mini App</h1>
-        {user && (
-          <div className="user-info">
-            <p>Привет, {user.first_name}!</p>
-          </div>
-        )}
-      </header>
-      <main>
-        <div className="button-container">
-          <button onClick={showMainButton}>Показать основную кнопку</button>
-          <button onClick={hideMainButton}>Скрыть основную кнопку</button>
-          <button onClick={() => WebApp.showAlert('Это тестовое уведомление')}>
-            Показать уведомление
-          </button>
+        <div className="header-content">
+          {user && (
+            <div className="user-avatar">
+              {/* Аватар пользователя из Telegram, показываем инициалы если нет фото */}
+              {user.photo_url ? (
+                <img src={user.photo_url} alt={`${user.first_name}'s avatar`} />
+              ) : (
+                <div className="avatar-placeholder">
+                  {user.first_name.charAt(0)}
+                </div>
+              )}
+            </div>
+          )}
+          <h1 className="app-title">Game Name</h1>
         </div>
+      </header>
+      <main className="main-content">
+        <button className="start-game-button" onClick={() => WebApp.showAlert('Функция запуска игры еще не реализована')}>
+          НАЧАТЬ ИГРАТЬ
+        </button>
       </main>
     </div>
   );
 }
 
-export default App; 
+export default App;
