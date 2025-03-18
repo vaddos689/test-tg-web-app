@@ -33,6 +33,7 @@ function App() {
     <div className="app">
       <header className="app-header">
         <div className="header-content">
+          <h1 className="app-title">Game Name</h1>
           {user && (
             <div className="user-avatar">
               {/* Аватар пользователя из Telegram, показываем инициалы если нет фото */}
@@ -45,7 +46,6 @@ function App() {
               )}
             </div>
           )}
-          <h1 className="app-title">Game Name</h1>
         </div>
       </header>
       <main className="main-content">
